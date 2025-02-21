@@ -1,0 +1,16 @@
+name: Deploy U+ED
+
+on: push
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout репозиторий
+        uses: actions/checkout@v2
+
+      - name: Установка Docker и Docker Compose
+        run: sudo apt-get install docker-compose -y
+
+      - name: Сборка и запуск контейнеров
+        run: docker-compose up --build -d
